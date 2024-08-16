@@ -22,7 +22,7 @@ function Calendar() {
     const [selectedEvent, setSelectedEvent] = useState(null);
 
     useEffect(() => {
-        axios.get('http://localhost:3001/events')
+        axios.get('https://fi-h2eh.onrender.com/events')
             .then(response => setEvents(response.data))
             .catch(error => console.error('Error al cargar los eventos:', error));
     }, []);
@@ -75,7 +75,7 @@ function Calendar() {
                 color: eventColor
             };
 
-            axios.put(`http://localhost:3001/events/${selectedEvent.id}`, updatedEvent)
+            axios.put(`https://fi-h2eh.onrender.com/events/${selectedEvent.id}`, updatedEvent)
                 .then(response => {
                     setEvents(events.map(event =>
                         event.id === selectedEvent.id ? response.data : event
@@ -92,7 +92,7 @@ function Calendar() {
                 color: eventColor
             };
 
-            axios.post('http://localhost:3001/events', newEvent)
+            axios.post('https://fi-h2eh.onrender.com/events', newEvent)
                 .then(response => {
                     setEvents([...events, response.data]);
                     closeModal();
@@ -112,7 +112,7 @@ function Calendar() {
     };
 
     const handleDeleteEvent = () => {
-        axios.delete(`http://localhost:3001/events/${selectedEvent.id}`)
+        axios.delete(`https://fi-h2eh.onrender.com/events/${selectedEvent.id}`)
             .then(() => {
                 setEvents(events.filter(event => event.id !== selectedEvent.id));
                 closeConfirmDeleteModal();
