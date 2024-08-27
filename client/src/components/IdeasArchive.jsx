@@ -11,10 +11,10 @@ const IdeasArchive = () => {
 
         const fetchIdeas = async () => {
             try {
-                const acceptedResponse = await axios.get('http://localhost:3001/ideas/accepted');
+                const acceptedResponse = await axios.get('https://fi-h2eh.onrender.com/ideas/accepted');
                 setAcceptedIdeas(acceptedResponse.data); // Actualiza  'acceptedIdeas' con las ideas aceptadas
 
-                const rejectedResponse = await axios.get('http://localhost:3001/ideas/rejected');
+                const rejectedResponse = await axios.get('https://fi-h2eh.onrender.com/ideas/rejected');
                 setRejectedIdeas(rejectedResponse.data); // Actualiza  'rejectedIdeas' con las ideas rechazadas
             } catch (error) {
                 console.error('Error fetching ideas:', error);
