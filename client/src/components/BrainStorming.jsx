@@ -16,7 +16,7 @@ const Brainstorming = () => {
 
     useEffect(() => {
         const fetchIdeas = async () => {
-            const response = await axios.get('http://localhost:3001/ideas');
+            const response = await axios.get('http://django-tester.onrender.com/ideas');
             setIdeas(response.data);
         };
 
@@ -31,7 +31,7 @@ const Brainstorming = () => {
 
     const handleAddIdea = async () => {
         if (newIdea.trim()) { // Verifica que la idea no esté vacía después de eliminar espacios en blanco
-            await axios.post('http://localhost:3001/ideas', { idea: newIdea }); // Envía la nueva idea al servidor
+            await axios.post('http://django-tester.onrender.com/ideas', { idea: newIdea }); // Envía la nueva idea al servidor
             setIdeas([...ideas, newIdea]); // Actualiza 'ideas' con la nueva idea
             setNewIdea(''); // Limpia el textarea
         }
@@ -55,7 +55,7 @@ const Brainstorming = () => {
     const handleAction = async () => {
         if (selectedUser && action) { // Verifica que un usuario y una acción estén seleccionados
             const endpoint = action === 'accept' ? 'accept' : 'reject'; // Determina el endpoint en función de la acción
-            await axios.post(`http://localhost:3001/ideas/${endpoint}`, { // Envía la idea y el usuario al servidor
+            await axios.post(`http://django-tester.onrender.com/ideas/${endpoint}`, { // Envía la idea y el usuario al servidor
                 idea: selectedIdea,
                 user: selectedUser
             });

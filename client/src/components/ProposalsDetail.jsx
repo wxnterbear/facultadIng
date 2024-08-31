@@ -22,7 +22,7 @@ const ProposalDetail = () => {
   useEffect(() => {
     const fetchProposals = async () => {
       try {
-        const response = await axios.get('http://127.0.0.1:8000/content_proposal/');
+        const response = await axios.get('django-tester.onrender.com/content_proposal/');
         const proposal = response.data.find(proposal => proposal.id === parseInt(id)); // Busca la propuesta con el id proporcionado
         console.log('Propuesta seleccionada:', proposal); // Inspecciona la estructura del objeto aquí
         setSelectedProposal(proposal);
@@ -70,19 +70,19 @@ const ProposalDetail = () => {
     };
 
     // Envía el comentario al servidor
-    axios.post(`http://localhost:3001/proposals/${proposalId}/comments`, comment)
+    axios.post(`http://django-tester.onrender.com/proposals/${proposalId}/comments`, comment)
       .then(response => {
         console.log('Comentario enviado:', response.data);
         setError(''); // Limpiar mensaje de error al enviar comentario exitosamente
         // Envía la acción correspondiente después de enviar el comentario
         if (statusAction === 'accept') {
-          axios.put(`http://localhost:3001/proposals/${proposalId}/accept`)
+          axios.put(`django-tester.onrender.com/proposals/${proposalId}/accept`)
             .then(response => {
               console.log('Propuesta aceptada:', response.data);
             })
             .catch(error => console.error('Error al aceptar la propuesta:', error));
         } else if (statusAction === 'reject') {
-          axios.put(`http://localhost:3001/proposals/${proposalId}/reject`)
+          axios.put(`django-tester.onrender.com/proposals/${proposalId}/reject`)
             .then(response => {
               console.log('Propuesta rechazada:', response.data);
             })
