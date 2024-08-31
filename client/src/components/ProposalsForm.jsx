@@ -1,8 +1,12 @@
 import React, { useState } from "react";
+import { useNavigate } from 'react-router-dom';
 import axios from 'axios';
 import '../css/proposalsForm.css';
+import '../css/header.css';
 
 const ProposalsForms = () => {
+
+    const navigate = useNavigate();
 
     const [title, setTitle] = useState('');
     const [type, setType] = useState('');
@@ -64,55 +68,70 @@ const ProposalsForms = () => {
     }
 
     return (
-        <form onSubmit={handleSubmit}>
-            <div className="form-container">
-                <strong className="title-p">Propuestas de contenido</strong>
-                <div className="title-container">
-                    <label>Title:</label>
-                    <input type="text" value={title} onChange={handleTitleChange} required />
-                </div>
-                <div className="type-container">
-                    <label>Type:</label>
-                    <select value={type} onChange={handleTypeChange} required>
-                        <option value="">---------</option>
-                        <option value="VID">Video</option>
-                        <option value="IMG">Image</option>
-                        <option value="STI">Storie_Image</option>
-                        <option value="STV">Storie_Video</option>
-                    </select>
-                </div>
-                <div className="sm-container">
-                    <label>Social Media:</label>
-                    <select value={socialMedia} onChange={handleSocialMediaChange} required>
-                        <option value="">---------</option>
-                        <option value="IG">Instagram</option>
-                        <option value="FB">Facebook</option>
-                        <option value="IF">Instagram-Facebook</option>
-                    </select>
-                </div>
-                <div className="copy-container">
-                    <label>Copy:</label>
-                    <textarea className="copy" value={copy} onChange={handleCopyChange} required ></textarea>
-                </div>
-                <div className="description-container">
-                    <label>Description:</label>
-                    <textarea className="description" value={description} onChange={handleDescriptionChange} required ></textarea>
-                </div>
-                <div className="pb-container">
-                    <label>Proposed By:</label>
-                    <select value={proposedBy} onChange={handleProposedByChange} required>
-                        <option value="">---------</option>
-                        <option value="wavy">wavy</option>
-                    </select>
-                </div>
-                <div className="file-container">
-                    <label>Files:</label>
-                    <input type="file" multiple onChange={handleFilesChange} />
-                </div>
-                <button className="btn-pform" type="submit">Enviar Propuesta</button>
+        <div className="container-f">
+            <div className="header">
+                <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+                <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+                <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+                <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
             </div>
+            <center>
+                <div className="form-c">
+                    <form onSubmit={handleSubmit}>
+                        <div className="form-container"><center>
 
-        </form>
+                            <strong className="title-p">Propuestas de contenido</strong>
+                            <div className="title-container">
+                                <label>Title:</label><br></br>
+                                <input className="input-form-p" type="text" value={title} onChange={handleTitleChange} required />
+                            </div>
+                            <div className="type-container">
+                                <label>Type:</label>
+                                <select className="select-form-p" value={type} onChange={handleTypeChange} required>
+                                    <option value="">---------</option>
+                                    <option value="VID">Video</option>
+                                    <option value="IMG">Image</option>
+                                    <option value="STI">Storie_Image</option>
+                                    <option value="STV">Storie_Video</option>
+                                </select>
+                            </div>
+                            <div className="sm-container">
+                                <label>Social Media:</label>
+                                <select className="select-form-p" value={socialMedia} onChange={handleSocialMediaChange} required>
+                                    <option value="">---------</option>
+                                    <option value="IG">Instagram</option>
+                                    <option value="FB">Facebook</option>
+                                    <option value="IF">Instagram-Facebook</option>
+                                </select>
+                            </div>
+                            <div className="copy-container">
+                                <label>Copy:</label>
+                                <textarea className="copy" value={copy} onChange={handleCopyChange} required ></textarea>
+                            </div>
+                            <div className="description-container">
+                                <label>Description:</label>
+                                <textarea className="description-form" value={description} onChange={handleDescriptionChange} required ></textarea>
+                            </div>
+                            <div className="pb-container">
+                                <label>Proposed By:</label>
+                                <select value={proposedBy} onChange={handleProposedByChange} required>
+                                    <option value="">---------</option>
+                                    <option value="wavy">wavy</option>
+                                </select>
+                            </div>
+                            <div className="file-container">
+                                <label>Files:</label>
+                                <input type="file" multiple onChange={handleFilesChange} />
+                            </div>
+                            <button className="btn-pform" type="submit">Enviar Propuesta</button>
+                        </center>
+                        </div>
+
+                    </form>
+                </div>
+            </center>
+
+        </div>
     );
 
 

@@ -1,9 +1,15 @@
 import React, { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
+import { useNavigate } from "react-router-dom";
 import axios from 'axios';
 import '../css/proposalDetail.css';
+import '../css/header.css';
+
 
 const ProposalDetail = () => {
+
+  const navigate = useNavigate();
+
   const { id } = useParams();  // Obtiene el id desde los parámetros de la url
   const [loading, setLoading] = useState(true); // Maneja el estado de carga (si los datos aun están cargando desde la api)
   const [comments, setComments] = useState({}); // Objeto vacío para guardar los comentarios
@@ -101,6 +107,12 @@ const ProposalDetail = () => {
 
   return (
     <div className="proposal-detail">
+      <div className="header">
+            <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+            <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+            <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+            <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
+          </div>
       <h1>{selectedProposal.title}</h1>
       <p><strong>Descripción:</strong> {selectedProposal.desc || 'No hay descripción'}</p>
       <p><strong>Descripción 2.0:</strong> {selectedProposal.descripcion}</p>
@@ -143,7 +155,7 @@ const ProposalDetail = () => {
           <option value="accept">Aceptar</option>
           <option value="reject">Rechazar</option>
         </select>
-        <button
+        <button className='btn-detail'
           onClick={() => handleCommentSubmit(selectedProposal.id)}
           disabled={!commentBy[selectedProposal.id] || !comments[selectedProposal.id] || !statusAction}
         >

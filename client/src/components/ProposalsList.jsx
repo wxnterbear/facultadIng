@@ -2,6 +2,7 @@ import React, { useEffect, useState } from "react";
 import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import '../css/proposalsList.css';
+import '../css/header.css';
 
 const ProposalsList = () => {
     const [proposals, setProposals] = useState([]);
@@ -36,6 +37,12 @@ const ProposalsList = () => {
 
     return (
         <div className="proposals-list">
+            <div className="header">
+            <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+            <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+            <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+            <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
+          </div>
             <h1>Propuestas</h1>
             <ul>
                 {/* Lista para mostrar las propuestas */}

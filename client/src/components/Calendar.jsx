@@ -5,12 +5,17 @@ import interactionPlugin from '@fullcalendar/interaction';
 import timeGridPlugin from '@fullcalendar/timegrid';
 import Modal from 'react-modal';
 import { v4 as uuidv4 } from 'uuid';
+import { useNavigate} from 'react-router-dom';
 import axios from 'axios';
 import '../css/calendar.css';
+import '../css/header.css';
 
 Modal.setAppElement('#root');
 
 function Calendar() {
+
+    const navigate = useNavigate()
+
     const [modalIsOpen, setModalIsOpen] = useState(false);
     const [viewEventModalIsOpen, setViewEventModalIsOpen] = useState(false);
     const [confirmDeleteModalIsOpen, setConfirmDeleteModalIsOpen] = useState(false);
@@ -137,6 +142,13 @@ function Calendar() {
 
     return (
         <div className='full-container'>
+            <div className="header">
+            <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+            <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+            <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+            <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
+          </div>
+          <div className='container-calendar'>
             <FullCalendar
                 plugins={[dayGridPlugin, timeGridPlugin, interactionPlugin]} // Plugins que se usarán en el calendario
                 initialView='dayGridMonth' // Vista inicial del calendario
@@ -209,6 +221,7 @@ function Calendar() {
                     <button onClick={closeConfirmDeleteModal}>Cancelar</button>
                 </div>
             </Modal>
+            </div>
         </div>
     );
 }

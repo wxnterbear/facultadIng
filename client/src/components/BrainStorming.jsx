@@ -3,6 +3,7 @@ import axios from "axios";
 import Modal from "react-modal";
 import { useNavigate } from 'react-router-dom';
 import '../css/ideas.css'
+import '../css/header.css';
 
 const Brainstorming = () => {
     const [ideas, setIdeas] = useState([]); // Estado para almacenar las ideas
@@ -65,17 +66,24 @@ const Brainstorming = () => {
 
     return (
         <div className="brainstorming-container">
+            <div className="header">
+            <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+            <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+            <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+            <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
+          </div>
             <div className="brainstorming-header">
-                <h1 className="title"><strong>Lluvia de ideas</strong></h1>
-                <button className="archive-button" onClick={() => navigate('/ideas-archive')}><strong>Ideas Aceptadas/Rechazadas</strong></button> {/* Botón para navegar */}     
+                <h1 className="title-brainstorming">Lluvia de ideas</h1>
+                <button className="archive-button" onClick={() => navigate('/ideas-archive')}>Ideas Aceptadas/Rechazadas</button> {/* Botón para navegar */}     
             </div>
-            <textarea
+            <center><textarea 
+                className="textarea-brainstorming"
                 value={newIdea}
                 onChange={handleInputChange}
                 placeholder="Añade una nueva idea..."
             ></textarea>
             <br />
-            <button onClick={handleAddIdea}>Agregar idea</button>
+            <button className="btn-add" onClick={handleAddIdea}>Agregar idea</button></center>
             <div className="ideas-board">
                 {ideas.map((idea, index) => ( // Mapea las ideas y renderiza un div para cada una
                     <div key={index} className="idea-postit" onClick={() => openModal(idea)}> {/* Cada idea es un "post-it" */}

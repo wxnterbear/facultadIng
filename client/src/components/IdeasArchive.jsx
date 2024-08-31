@@ -1,11 +1,14 @@
 import React, { useState, useEffect } from "react";
+import { useNavigate} from 'react-router-dom';
 import axios from "axios";
 import '../css/ideasArchive.css';
+import '../css/header.css';
 
 const IdeasArchive = () => {
     const [acceptedIdeas, setAcceptedIdeas] = useState([]); // Estado para almacenar las ideas aceptadas
     const [rejectedIdeas, setRejectedIdeas] = useState([]); // Estado para almacenar las ideas rechazadas
 
+    const navigate = useNavigate();
 
     useEffect(() => {
 
@@ -26,6 +29,12 @@ const IdeasArchive = () => {
 
     return (
         <div className="ideas-archive-container"> {/* Contenedor principal */}
+        <div className="header">
+            <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+            <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+            <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+            <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
+          </div>
             <div className="ideas-board-a-r accepted">
                 <h1 className="title-a">Ideas Aceptadas</h1> {/* Título para las ideas aceptadas */}
                 <div className="ideas-list-a-r"> {/* Contenedor para las ideas aceptadas */}

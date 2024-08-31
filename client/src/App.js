@@ -8,6 +8,8 @@ import Brainstorming from './components/BrainStorming';
 import ProposalsForms from './components/ProposalsForm';
 import Home from './components/home';
 import Register from './components/GoogleRegister';
+//import Prueba from './components/Prueba';
+import 'bootstrap/dist/css/bootstrap.min.css'; 
 
 function App() {
   return (
@@ -26,6 +28,7 @@ function App() {
           <Route path="/brainstorming" element={<Brainstorming />} />
           <Route path="/ideas-archive" element={<IdeasArchive />} />
           <Route path="/proposals_form" element={<ProposalsForms />} />
+          
 
         </Routes>
 

@@ -2,10 +2,13 @@ import React, {useState} from "react";
 import { GoogleLogin } from "@react-oauth/google";
 import { jwtDecode } from "jwt-decode";
 import '../css/register.css';
+import { useNavigate } from "react-router-dom";
+import '../css/header.css';
 import imagen from '../images/logologin.png';
 
 const Register = () => {
 
+    const navigate = useNavigate();
     const [formData, setFormData] = useState({
 
         name: '',
@@ -27,7 +30,16 @@ const Register = () => {
     };
 
     return (
-        <div className='main-container'>
+        
+        
+        <div className='container-r'>
+            <div className="header">
+            <button className="opc" onClick={() => navigate('/brainstorming')}>Ir a lluvia de ideas</button>
+            <button className="opc" onClick={() => navigate('/proposals')}>Ir a Propuestas</button>
+            <button className="opc" onClick={() => navigate('/proposals_form')}>Ir al formulario de Propuestas</button>
+            <button className="opc" onClick={() => navigate('/calendar')}>Ir a Calendario</button>
+          </div>
+          
             <div className='register-container'>
                 <div className='image-container'>
                     <img src={imagen} alt='Imagen' className='image' />
